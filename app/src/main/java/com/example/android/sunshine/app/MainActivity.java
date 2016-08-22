@@ -92,6 +92,11 @@ public class MainActivity extends ActionBarActivity {
 
     @Override
     public void onResume(){
-
+        super.onResume();
+        if ( mLocation != Utility.getPreferredLocation(this)){
+            ForecastFragment ff = (ForecastFragment) getSupportFragmentManager().findFragmentByTag(FORECASTFRAGMENT_TAG);
+            ff.onLocationChanged();
+            mLocation = Utility.getPreferredLocation(this);
+        }
     }
 }
